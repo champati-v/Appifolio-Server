@@ -12,6 +12,10 @@ app.use(express.json());
 const applicationRoutes = require('./routes/applicationRoutes');
 app.use('/api/applications', applicationRoutes);
 
+app.get('/', (req, res) => {
+    res.json({ status: "Running" ,message: 'Welcome to Appifolio! Manage your job applications with ease. Please visit https://appifolio.vercel.app to get started 🚀' });
+});
+
 mongoose.connect(process.env.MONGO_URL).then(() => {
     console.log("Mongo DB connected successfully ✅");
     app.listen(process.env.PORT || 5000, () => {
